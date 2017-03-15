@@ -127,8 +127,12 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
-so $HOME/.vim/settings.vim
 
 set encoding=utf-8
+
+so $HOME/.vim/settings.vim
+
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
+set clipboard=unnamed
+

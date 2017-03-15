@@ -73,3 +73,8 @@ vmap <A-A> :Tabularize /
 
 " Source current file CmA-% (good for vim development)
 map <A-%> :so %<CR>
+
+" Copy paste through ALT
+
+map <A-c> "*c
+map <A-v> "*p
