@@ -135,4 +135,4 @@ so $HOME/.vim/settings.vim
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 set clipboard=unnamed
-
+autocmd BufWritePre * %s/\s\+$//e
