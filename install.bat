@@ -20,8 +20,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/gVimRC/.vim/
 runas /user:administrator "cmd.exe /C cd %userprofile% & mklink /d .vim gVimRC\.vim & mklink _vimrc gVimRC\_vimrc"
 :: Figure out how to make fonts work
 ::powershell -Command "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14); Get-ChildItem -Recurse -include gVimRC/fonts/*.ttf | % { $fonts.CopyHere($_.fullname) }"
-vim +PluginInstall +qall
-cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
+cmd /c vim +PluginInstall +qall
+cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
 
 :: Cleanup...
 del lua.zip
