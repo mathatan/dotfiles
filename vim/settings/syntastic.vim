@@ -25,3 +25,15 @@ endfunction
 if !exists("g:syntastic_ruby_exec")
     let g:syntastic_ruby_exec = s:FindRubyExec()
 endif
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_enable_signs=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_csslint_options = "--errors=empty-rules,display-property-grouping,ids,font-sizes,zero-units,vendor-prefix,gradients,import,compatible-vendor-prefixes,duplicate-properties,fallback-colors --warnings=none"
+let g:syntastic_quiet_messages = {}
+let g:syntastic_scss_scss_lint_args = '-c ~/.scsslint.yml'
+
+let g:syntastic_html_checkers = ['htmlhint', 'eslint']
+
+let g:syntastic_html_htmlhint_args = '-c ~/.htmlhintrc'

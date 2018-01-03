@@ -85,6 +85,8 @@ function! OpenNerdTree()
 endfunction
 nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
 
+map <leader>r :NERDTreeFind<cr>
+
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
 nmap <silent> ,qc :cclose<CR>
@@ -170,3 +172,7 @@ map <silent> ,hp :!open -a Safari %<CR><CR>
 " :cp)
 nnoremap <silent> <C-x> :cn<CR>
 nnoremap <silent> <C-z> :cp<CR>
+
+" Sort
+nnoremap <silent> <Leader>ss :'{,'}sort<CR>
+xnoremap <silent> <Leader>ss :sort<CR>

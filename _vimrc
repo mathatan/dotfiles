@@ -34,7 +34,7 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
 
@@ -66,10 +66,17 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
+
+set wrap
+set linebreak
+set nolist
+set showbreak=---------->\
+set cpoptions+=n
+set whichwrap+=<,>,h,l
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -87,9 +94,6 @@ filetype indent on
 
 " Display tabs and trailing spaces visually
 "set list listchars=tab:\ \ ,trail:...
-
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
@@ -123,16 +127,24 @@ set sidescroll=1
 
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
+"set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 
 set encoding=utf-8
 
+if !has("nvim")
+    Plugin 'pangloss/vim-javascript'
+endif
+
+set tm=300
+
 so $HOME/.vim/settings.vim
 
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
-set clipboard=unnamed
-autocmd BufWritePre * %s/\s\+$//e
+
+" Clipboard copy to gVim, enable if needed
+"set clipboard=unnamed
+"autocmd BufWritePre * %s/\s\+$//e
