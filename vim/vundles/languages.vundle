@@ -7,3 +7,6 @@ Bundle 'nelstrom/vim-markdown-preview'
 Bundle 'skwp/vim-html-escape'
 Bundle 'mxw/vim-jsx'
 Bundle 'jparise/vim-graphql'
+Bundle 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }

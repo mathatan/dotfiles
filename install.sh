@@ -4,7 +4,7 @@
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install zsh zsh-completions
-brew install rsync ctags the_silver_searcher python node@8
+brew install rsync ctags the_silver_searcher python node@6
 brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
 npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
@@ -21,7 +21,7 @@ ln -s $CURDIR/bin ~/.dotfilesbin
 ln -s $CURDIR/vimify/inputrc ~/.inputrc
 ln -s $CURDIR/vimify/editrc ~/.editrc
 ln -s $CURDIR/ctags/ctags ~/.ctags
-ln -s $CURDIR/zsh/prezto/runcoms/zshrc ~/.zshrc
+ln -s $CURDIR/zsh/prezto-override/zshrc ~/.zshrc
 ln -s $CURDIR/zsh/prezto/runcoms/zshenv ~/.zshenv
 ln -s $CURDIR/zsh/prezto/runcoms/zlogin ~/.zlogin
 ln -s $CURDIR/zsh/prezto/runcoms/zlogout ~/.zlogout
