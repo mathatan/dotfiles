@@ -42,11 +42,12 @@ try
     Write-Host "Administrator password needs to be set for the installation to continue..."
     net user administrator /active:yes
     net user administrator *
-    #iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    #choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 cygwin cyg-get conemu 7zip.install virtualbox vagrant mariadb
-    #Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.4_Win64_bin.zip -OutFile lua.zip
-    #$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
-    #7z x lua.zip -o"C:\Program Files\vim"
+    iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 cygwin cyg-get conemu 7zip.install 
+    #virtualbox vagrant mariadb
+    Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.4_Win64_bin.zip -OutFile lua.zip
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+    7z x lua.zip -o"C:\Program Files\vim"
 
     Read-Host -Prompt "Install complete. Press any key."
 }
