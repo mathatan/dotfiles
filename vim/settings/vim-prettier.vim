@@ -43,3 +43,8 @@ let g:prettier#config#config_precedence = 'prefer-file'
 
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'preserve'
+
+
+autocmd FileType scss let b:prettier_ft_default_args = {
+  \ 'parser': 'postcss',
+  \ }
