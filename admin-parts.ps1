@@ -42,13 +42,17 @@ try
     Write-Host "Administrator password needs to be set for the installation to continue..."
     net user administrator /active:yes
     net user administrator *
+    # Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 cygwin cyg-get conemu 7zip.install 
-    #virtualbox vagrant mariadb
-    Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.4_Win64_bin.zip -OutFile lua.zip
+    choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 wsl 7zip.install 
+    # cygwin cyg-get conemu virtualbox vagrant mariadb
+    # TODO: Add parsing of url from http://joedf.ahkscript.org/LuaBuilds/
+    Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.5_Win64_bin.zip -OutFile lua.zip
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
     7z x lua.zip -o"C:\Program Files\vim"
 
+    Write-Host "Windows Subsystem for Linux is installed, but to install Ubuntu or any other system a reboot is required. This is not automated."
+    Write-Host "To install Ubuntu run (as an administrator): choco install wsl-ubuntu-1804"
     Read-Host -Prompt "Install complete. Press any key."
 }
 catch
