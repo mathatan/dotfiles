@@ -1,5 +1,5 @@
-Basic vim and gvim setup for windows
-====================================
+Basic automated system setup for Windows and MacOs
+==================================================
 
 Based on [YADR](https://github.com/skwp/dotfiles) vim configuration.
 
@@ -8,25 +8,24 @@ Requires installation of [Chocolatey](https://chocolatey.org/) or something simi
 Installation
 ------------
 
-Get [Chocolatey](https://chocolatey.org/) ready and rolling.
-
-Open an elevated rights CMD or Shell.
-
-Install required Choco packages:
-
 ```
-$ choco install ag ctags curl editorconfig.core git hub lua vim-tux
+$ powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/mathatan/dotfiles/master/install.bat -OutFile install.bat" && install.bat
 ```
 
+
+### Fonts
+
+To have gvim display all special characters correctly batch fonts should be installed from `fonts` directory.
+
+
+
+Outdated parts
+--------------
 
 ### Lua support
 In addition to that you'll still need to copy Lua dll into vim installation directory in `C:\Program Files\vim`.
 
 Download Lua dll e.g. from: http://joedf.ahkscript.org/LuaBuilds/
-
-### Fonts
-
-To have gvim display all special characters correctly batch fonts should be installed from `fonts` directory.
 
 
 ### Vundle
