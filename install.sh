@@ -3,9 +3,34 @@
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install zsh zsh-completions
-brew install rsync ctags the_silver_searcher python node@6
-brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install zsh zsh-completions
+    brew install rsync ctags the_silver_searcher python node@6
+    brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
+elif grep -q Microsoft /proc/version; then
+    # wsl linux
+    apt-get install zsh zsh-completions
+    apt-get install ctags silversearcher-ag curl software-properties-common
+    apt-get install python-dev python-pip python3-dev python3-pip
+
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt-get update
+    sudo apt-get install neovim
+
+    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+    sudo update-alternatives --config vi
+    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+    sudo update-alternatives --config vim
+    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+    sudo update-alternatives --config editor
+
+    apt-get install build-essential libssl-dev
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+else 
+    echo "Unsuported platform..."
+    exit 1;
+fi
+
 npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
 CURDIR=`pwd`
