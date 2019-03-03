@@ -65,6 +65,8 @@ mkdir -p ~/.zsh.before
 mkdir -p ~/.zsh.after
 mkdir -p ~/.zsh.prompts
 
+touch ~/.zsh.after/env
+
 # If this user's login shell is not already "zsh", attempt to switch.
 TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
 if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
