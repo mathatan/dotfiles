@@ -12,6 +12,14 @@ Installation
 $ powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/mathatan/dotfiles/master/install.bat -OutFile install.bat" && install.bat
 ```
 
+With Linux or MacOs clone the repositories:
+```
+$ git clone --recurse-submodules -j8 https://github.com/mathatan/dotfiles.git
+$ git clone https://github.com/VundleVim/Vundle.vim.git ~/dotfiles/vim/bundle/Vundle.vim
+``` 
+
+and run `$ install.sh` from the dot files folder.
+
 
 ### Fonts
 
