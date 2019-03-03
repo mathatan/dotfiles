@@ -13,9 +13,9 @@ printf "\n\nexport JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64\nexport PATH=\"\$
 cd Android/tools/bin
 ./sdkmanager "platform-tools" "platforms;android-26" "build-tools;26.0.3"
 export ANDROID_HOME=$HOME/Android
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-printf "\n\nexport ANDROID_HOME=/home/<user>/Android\nexport PATH=\$PATH:\$ANDROID_HOME/tools\nexport PATH=\$PATH:\$ANDROID_HOME/platform-tools" >> ~/.zsh.after/env
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+printf "\n\nexport ANDROID_HOME=${$HOME}/Android\nexport PATH=\"\$PATH:\$ANDROID_HOME/tools\$ANDROID_HOME/platform-tools\"" >> ~/.zsh.after/env
 android update sdk --no-ui
 sudo apt-get install gradle
 gradle -v
