@@ -12,7 +12,7 @@ elif [[ !`grep -q Microsoft /proc/version` ]]; then
     sudo apt-get install -y zsh
     sudo apt-get install -y ctags silversearcher-ag curl software-properties-common
     sudo apt-get install -y python-dev python-pip python3-dev python3-pip
-    sudp apt-get install -y mercurial
+    sudo apt-get install -y mercurial
 
     sudo add-apt-repository ppa:neovim-ppa/stable -y
     sudo apt-get update
