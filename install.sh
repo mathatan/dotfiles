@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -7,15 +7,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install zsh zsh-completions
     brew install rsync ctags the_silver_searcher python node@6
     brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
-elif grep -q Microsoft /proc/version; then
+elif [[ !`grep -q Microsoft /proc/version` ]]; then
     # wsl linux
-    apt-get install zsh zsh-completions
-    apt-get install ctags silversearcher-ag curl software-properties-common
-    apt-get install python-dev python-pip python3-dev python3-pip
+    sudo apt-get install -y zsh
+    sudo apt-get install -y ctags silversearcher-ag curl software-properties-common
+    sudo apt-get install -y python-dev python-pip python3-dev python3-pip
 
-    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo add-apt-repository ppa:neovim-ppa/stable -y
     sudo apt-get update
-    sudo apt-get install neovim
+    sudo apt-get -y install neovim
 
     sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
     sudo update-alternatives --config vi
@@ -24,8 +24,10 @@ elif grep -q Microsoft /proc/version; then
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
     sudo update-alternatives --config editor
 
-    apt-get install build-essential libssl-dev
+    sudo apt-get install -y build-essential libssl-dev
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    source ~/.bashrc    
+    nvm install --lts
 else 
     echo "Unsuported platform..."
     exit 1;
@@ -65,7 +67,7 @@ if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
     # If this platform provides a "chsh" command (not Cygwin), do it, man!
     if hash chsh >/dev/null 2>&1; then
         printf "Time to change your default shell to zsh!\n"
-        chsh -s $(grep /zsh$ /etc/shells | tail -1)
+        sudo chsh -s $(grep /zsh$ /etc/shells | tail -1)
         # Else, suggest the user do so manually.
     else
         printf "I can't change your shell automatically because this system does not have chsh.\n"

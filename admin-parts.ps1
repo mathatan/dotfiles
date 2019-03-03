@@ -43,8 +43,9 @@ try
     net user administrator /active:yes
     net user administrator *
     # Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-    iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 wsl 7zip.install vscode neovim
+    git config --global core.autocrlf false
     # cygwin cyg-get conemu virtualbox vagrant mariadb
     # TODO: Add parsing of url from http://joedf.ahkscript.org/LuaBuilds/
     Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.5_Win64_bin.zip -OutFile lua.zip
