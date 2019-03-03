@@ -1,17 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install zsh zsh-completions
-    brew install rsync ctags the_silver_searcher python node@6
+    brew install rsync ctags the_silver_searcher python # node@6
     brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
 elif [[ !`grep -q Microsoft /proc/version` ]]; then
     # wsl linux
     sudo apt-get install -y zsh
     sudo apt-get install -y ctags silversearcher-ag curl software-properties-common
     sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+    sudp apt-get install -y mercurial
 
     sudo add-apt-repository ppa:neovim-ppa/stable -y
     sudo apt-get update
@@ -25,17 +26,20 @@ elif [[ !`grep -q Microsoft /proc/version` ]]; then
     sudo update-alternatives --config editor
 
     sudo apt-get install -y build-essential libssl-dev
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-    source ~/.bashrc    
-    nvm install --lts
 else 
     echo "Unsuported platform..."
     exit 1;
 fi
 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install --lts
+
 npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
-CURDIR=`pwd`
+CURDIR=`pwd -P`
 
 ln -s $CURDIR/_vimrc ~/.vimrc
 ln -s $CURDIR/vim ~/.vim
@@ -67,7 +71,7 @@ if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
     # If this platform provides a "chsh" command (not Cygwin), do it, man!
     if hash chsh >/dev/null 2>&1; then
         printf "Time to change your default shell to zsh!\n"
-        sudo chsh -s $(grep /zsh$ /etc/shells | tail -1)
+        chsh -s $(grep /zsh$ /etc/shells | tail -1)
         # Else, suggest the user do so manually.
     else
         printf "I can't change your shell automatically because this system does not have chsh.\n"
