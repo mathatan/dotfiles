@@ -15,7 +15,7 @@ for /f "tokens=3*" %%A in ('reg query "HKCU\Environment" /v Path') do set userpa
 set PATH=%path%;%userpath%;%syspath%
 
 cd %USERPROFILE%
-git clone https://github.com/mathatan/dotfiles.git
+git --recurse-submodules -j8 clone https://github.com/mathatan/dotfiles.git
 git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/dotfiles/vim/bundle/Vundle.vim
 runas /user:administrator "cmd.exe /C cd %userprofile% & mklink /d .vim dotfiles\vim & mklink _vimrc dotfiles\_vimrc"
 :: Figure out how to make fonts work
