@@ -14,3 +14,5 @@ vim/sessions
 .netrwhist
 bin/subl
 tags
+zsh/zsh
+bin/bin
