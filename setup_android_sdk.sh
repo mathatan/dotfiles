@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 # Orignally from https://gist.github.com/jjvillavicencio/18feb09f0e93e017a861678bc638dcb0
 
 cd ~
@@ -15,7 +15,7 @@ cd Android/tools/bin
 export ANDROID_HOME=$HOME/Android
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
-printf "\n\nexport ANDROID_HOME=${$HOME}/Android\nexport PATH=\"\$PATH:\$ANDROID_HOME/tools\$ANDROID_HOME/platform-tools\"" >> ~/.zsh.after/env
+printf "\n\nexport ANDROID_HOME=$HOME/Android\nexport PATH=\"\$PATH:\$ANDROID_HOME/tools\$ANDROID_HOME/platform-tools\"" >> ~/.zsh.after/env
 android update sdk --no-ui
 sudo apt-get install gradle
 gradle -v
