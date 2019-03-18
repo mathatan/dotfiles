@@ -5,8 +5,14 @@
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install zsh zsh-completions
-    brew install rsync ctags the_silver_searcher python # node@6
+    brew install rsync ctags the_silver_searcher python nvm # node@6
     brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    nvm install 8 --lts
 elif [[ !`grep -q Microsoft /proc/version` ]]; then
     # wsl linux
     sudo apt-get install -y zsh
@@ -26,16 +32,16 @@ elif [[ !`grep -q Microsoft /proc/version` ]]; then
     sudo update-alternatives --config editor
 
     sudo apt-get install -y build-essential libssl-dev
+
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    nvm install --lts
 else 
     echo "Unsuported platform..."
     exit 1;
 fi
-
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm install --lts
 
 npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
