@@ -6,7 +6,20 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install zsh zsh-completions
     brew install rsync ctags the_silver_searcher python nvm # node@6
-    brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
+    brew install imagemagick
+    #brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
+
+    brew install neovim
+    brew cask install vimr tortoisehg xquartz fontforge
+    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package --force
+
+    defaults write org.n8gray.QLColorCode font Inconsolata\ XL
+    defaults write org.n8gray.QLColorCode hlTheme solarized-dark
+    defaults write org.n8gray.QLColorCode extraHLFlags '-l -W -t=4'
+
+    brew install macvim
+    vim +PluginInstall +qall
+    nvim +PlugInstall +qall
 
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

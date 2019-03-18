@@ -1,6 +1,6 @@
 " Make it beautiful - colors and fonts
 
-if has("gui_running")
+if has("gui_running") && !has("nvim")
   "tell the term has 256 colors
   set t_Co=256
 
@@ -23,18 +23,34 @@ if has("gui_running")
 else
   let g:CSApprox_loaded = 1
 
-  colorscheme solarized
   set background=dark
 
   " For people using a terminal that is not Solarized
   " if exists("g:yadr_using_unsolarized_terminal")
-  "   let g:solarized_termcolors=256
-  "   let g:solarized_termtrans=1
+  let g:solarized_termcolors=256
+  let g:solarized_termtrans=1
   " end
 endif
 
-if !has("nvim")
-    set t_Co=256
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-endif
+" if !has("nvim")
+"     colorscheme solarized
+"     set t_Co=256
+"     let g:solarized_termcolors=256
+"     let g:solarized_termtrans=1
+" endif
+
+" if has("nvim")
+"     set t_Co=16
+"     colorscheme solarized
+"     set background=dark
+"     let g:solarized_termcolors=256
+"     let g:solarized_termtrans=1
+" endif
+
+" if has("gui_vimr")
+    " colorscheme solarized
+    " set background=dark
+    " let g:solarized_termcolors=256
+    " let g:solarized_termtrans=1
+" endif
+

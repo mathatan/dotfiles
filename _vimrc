@@ -41,11 +41,16 @@ let mapleader=","
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in $HOME/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
-if filereadable(expand("$HOME/.vim/vundles.vim"))
-  source $HOME/.vim/vundles.vim
+if !has("nvim")
+	if filereadable(expand("$HOME/.vim/vundles.vim"))
+		source $HOME/.vim/vundles.vim
+	endif
+	au BufNewFile,BufRead *.vundle set filetype=vim
 endif
-au BufNewFile,BufRead *.vundle set filetype=vim
 
+if has("nvim")
+	source $HOME/.vim/plugs.vim
+endif
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
