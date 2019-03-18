@@ -32,7 +32,7 @@ linters:
 
   ElsePlacement:
     enabled: true
-    style: new_line # or 'new_line'
+    style: same_line # or 'new_line'
 
   EmptyLineBetweenBlocks:
     enabled: true
@@ -40,9 +40,6 @@ linters:
 
   EmptyRule:
     enabled: true
-
-  TrailingWhitespace:
-    enabled: false
 
   FinalNewline:
     enabled: true
@@ -78,7 +75,7 @@ linters:
 
   LeadingZero:
     enabled: false
-    style: exclude_zero # or 'include_zero'
+    style: include_zero #exclude_zero # or 'include_zero'
 
   MergeableSelector:
     enabled: true
@@ -190,4 +187,3 @@ linters:
 
   Compass::*:
     enabled: false
-
