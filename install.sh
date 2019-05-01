@@ -18,8 +18,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     defaults write org.n8gray.QLColorCode extraHLFlags '-l -W -t=4'
 
     brew install macvim
-    vim +PluginInstall +qall
-    nvim +PlugInstall +qall
 
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -85,6 +83,11 @@ mkdir -p ~/.zsh.after
 mkdir -p ~/.zsh.prompts
 
 touch ~/.zsh.after/env
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    vim +PluginInstall +qall
+    nvim +PlugInstall +qall
+fi
 
 # If this user's login shell is not already "zsh", attempt to switch.
 TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
