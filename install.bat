@@ -25,6 +25,6 @@ cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
 
 :: Cleanup...
 del lua.zip
-del admin.ps
+del admin.ps1
 del install.bat
 runas /user:administrator "net user administrator /active:no"
