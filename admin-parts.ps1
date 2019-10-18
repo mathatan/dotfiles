@@ -44,7 +44,8 @@ try
     net user administrator *
     # Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 wsl 7zip.install vscode neovim hg sourcetree nvm conemu 
+    choco install -y ag ctags curl editorconfig.core git.install hub lua vim-tux vcredist140 wsl 7zip.install vscode neovim nvm conemu 
+    # hg sourcetree
     refreshenv
     git config --global core.autocrlf false
     # cygwin cyg-get conemu virtualbox vagrant mariadb
@@ -52,7 +53,7 @@ try
     Invoke-WebRequest http://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.5_Win64_bin.zip -OutFile lua.zip
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
     7z x lua.zip -o"C:\Program Files\vim"
-    nvm install 8 32
+    #nvm install 8 32
     #nvm use 8
     #npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
