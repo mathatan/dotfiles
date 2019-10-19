@@ -21,7 +21,7 @@ runas /user:administrator "cmd.exe /C cd %userprofile% & mklink /d .vim dotfiles
 :: Figure out how to make fonts work
 ::powershell -Command "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14); Get-ChildItem -Recurse -include dotfiles/fonts/*.ttf | % { $fonts.CopyHere($_.fullname) }"
 cmd /c vim +PluginInstall +qall
-cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
+# cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
 
 :: Cleanup...
 del lua.zip
