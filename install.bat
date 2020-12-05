@@ -15,16 +15,16 @@ for /f "tokens=3*" %%A in ('reg query "HKCU\Environment" /v Path') do set userpa
 set PATH=%path%;%userpath%;%syspath%
 
 cd %USERPROFILE%
-git --recurse-submodules -j8 clone https://github.com/mathatan/dotfiles.git
+git clone --recurse-submodules -j8 https://github.com/mathatan/dotfiles.git
 git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/dotfiles/vim/bundle/Vundle.vim
 runas /user:administrator "cmd.exe /C cd %userprofile% & mklink /d .vim dotfiles\vim & mklink _vimrc dotfiles\_vimrc"
 :: Figure out how to make fonts work
 ::powershell -Command "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14); Get-ChildItem -Recurse -include dotfiles/fonts/*.ttf | % { $fonts.CopyHere($_.fullname) }"
 cmd /c vim +PluginInstall +qall
-cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
+# cmd /c cyg-get.bat rsync-3.1.2-1 openssh-7.5p1-1 zsh-5.1.1-1
 
 :: Cleanup...
 del lua.zip
-del admin.ps
+del admin.ps1
 del install.bat
 runas /user:administrator "net user administrator /active:no"
