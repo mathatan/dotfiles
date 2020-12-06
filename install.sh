@@ -77,6 +77,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     cd $CURPATH
 
+    npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
+
 elif [[ !`grep -q Microsoft /proc/version` ]]; then
     # wsl linux
     sudo apt-get install -y zsh
@@ -84,8 +86,8 @@ elif [[ !`grep -q Microsoft /proc/version` ]]; then
     sudo apt-get install -y python-dev python-pip python3-dev python3-pip
     # sudo apt-get install -y mercurial
 
-    sudo add-apt-repository ppa:neovim-ppa/stable -y
-    sudo apt-get update
+    #sudo add-apt-repository ppa:neovim-ppa/stable -y
+    #sudo apt-get update
     sudo apt-get -y install neovim
 
     sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
@@ -95,19 +97,18 @@ elif [[ !`grep -q Microsoft /proc/version` ]]; then
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
     sudo update-alternatives --config editor
 
-    sudo apt-get install -y build-essential libssl-dev
+    # sudo apt-get install -y build-essential libssl-dev
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    nvm install --lts
+    # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    # export NVM_DIR="$HOME/.nvm"
+    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    # nvm install --lts
 else
     echo "Unsuported platform..."
     exit 1;
 fi
 
-npm install -g csslint eslint prettier prettier-eslint prettier-eslint-cli eslint-config-prettier eslint-plugin-html eslint-plugin-prettier eslint-plugin-react eslint-plugin-requirejs htmlhint babel-eslint js-beautify jsonlint
 
 CURDIR=`pwd -P`
 
